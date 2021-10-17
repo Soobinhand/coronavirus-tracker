@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Coronavirus Tracker Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1 style="margin-top: 20px">전세계 확진자 수 추이</h1>
+
+    <div class="">
+        <span>총 확진자 수:  </span>
+        <span th:text="${totalReportedCases}" style="margin-top: 20px; font-size: 30px"></span>
+        <span>+</span>
+        <span th:text="${totalNewCases}"></span>
+
+
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>국가</th>
+            <th>총 확진자 수</th>
+            <th>오늘의 추가 확진자 수</th>
+        </tr>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.latestTotalCases}">0</td>
+            <td th:text="${locationStat.diffFromPrevDay}">0</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
